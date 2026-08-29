@@ -25,6 +25,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+        run: npm run build
+
       - name: Add and Sync Android Platform
         run: |
           npx cap add android || true
