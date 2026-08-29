@@ -24,7 +24,8 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
+        
+      - name: Build web assets
         run: npm run build
 
       - name: Add and Sync Android Platform
