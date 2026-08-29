@@ -24,6 +24,7 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+        working-directory: QoodirAPP
         
       - name: Create Web Assets Directory
         run: |
@@ -31,17 +32,20 @@ jobs:
           cp index.html www/ 2>/dev/null || :
           # Salin file atau folder lain (seperti CSS/JS/gambar) jika ada, contoh:
           # cp -r assets/ www/
+          working-directory: QoodirAPP
 
       - name: Add and Sync Android Platform
         run: |
           npx cap add android || true
           npx cap sync android
+          working-directory: QoodirAPP
 
       - name: Build APK with Gradle
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
+          working-directory: QoodirAPP
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
