@@ -25,8 +25,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
         
-      - name: Build web assets
-        run: npm run build
+      - name: Create Web Assets Directory
+        run: |
+          mkdir www
+          cp index.html www/ 2>/dev/null || :
+          # Salin file atau folder lain (seperti CSS/JS/gambar) jika ada, contoh:
+          # cp -r assets/ www/
 
       - name: Add and Sync Android Platform
         run: |
